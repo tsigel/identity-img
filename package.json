@@ -1,0 +1,30 @@
+{
+  "name": "identity-img",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tsigel/identity-img.git"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "dist/identity-img.min.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "typescript": "^2.5.2"
+  },
+  "scripts": {
+    "build": "npm run compile && npm run browserify && npm run uglify",
+    "compile": "node_modules/.bin/tsc src/identity.ts -m commonjs",
+    "browserify": "mkdir -p ./dist && node_modules/.bin/browserify -s identity-img src/identity.js -o dist/identity-img.js",
+    "uglify": "node_modules/.bin/uglifyjs dist/identity-img.js -o dist/identity-img.min.js"
+  },
+  "keywords": [
+    "identity-icon",
+    "generate",
+    "avatar",
+    "image"
+  ]
+}
