@@ -10,16 +10,18 @@
     "src"
   ],
   "main": "dist/identity-img.min.js",
+  "types": "dist/Identity.d.ts",
   "dependencies": {},
   "devDependencies": {
-    "browserify": "^14.4.0",
-    "typescript": "^2.5.2"
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.3",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
   },
   "scripts": {
-    "build": "npm run compile && npm run browserify && npm run uglify",
-    "compile": "node_modules/.bin/tsc src/identity.ts -m commonjs",
-    "browserify": "mkdir -p ./dist && node_modules/.bin/browserify -s identity-img src/identity.js -o dist/identity-img.js",
-    "uglify": "node_modules/.bin/uglifyjs dist/identity-img.js -o dist/identity-img.min.js"
+    "build": "npm run compile && webpack",
+    "compile": "node_modules/.bin/tsc",
+    "prepare": "npm run build"
   },
   "keywords": [
     "identity-icon",
